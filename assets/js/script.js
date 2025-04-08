@@ -4,4 +4,5 @@ export async function onRequest(context) {
   const data = await ps.first();
 
   return Response.json(data);
+  console.log(Respons.json(data));
 }
