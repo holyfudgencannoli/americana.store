@@ -1,22 +1,7 @@
-async function handleRequest(request) {
-  try {
-    // Query the D1 database
-    const result = await DB.prepare("SELECT * FROM your_table_name").all();
+export async function onRequest(context) {
+  // Create a prepared statement with our query
+  const ps = context.env.sc-c98d-d1.prepare("SELECT * from users");
+  const data = await ps.first();
 
-    // Respond with the data as JSON
-    return new Response(JSON.stringify(result), {
-      headers: { 'Content-Type': 'application/json' },
-    });
-  } catch (error) {
-    // Handle errors
-    return new Response("Error accessing database: " + error.message, {
-      status: 500,
-    });
-  }
+  return Response.json(data);
 }
-
-addEventListener('fetch', (event) => {
-  event.respondWith(handleRequest(event.request));
-});
-      // Fetch data from the Cloudflare Worker
-      
