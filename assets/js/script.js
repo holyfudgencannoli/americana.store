@@ -19,12 +19,4 @@ addEventListener('fetch', (event) => {
   event.respondWith(handleRequest(event.request));
 });
       // Fetch data from the Cloudflare Worker
-      fetch('https://your-worker-url')
-        .then((response) => response.json())
-        .then((data) => {
-          // Display the data
-          document.getElementById('data').innerHTML = JSON.stringify(data);
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-        });
+      
